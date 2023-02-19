@@ -1,7 +1,18 @@
+<div class="input-group w-25 mt-5">
+    <input class="form-control" type="text" [(ngModel)]="searchInput" (keyup)="filterProducts()">
+    <button class="btn btn-primary">Seach</button>
+</div>
+
+
 <div class="product-list">
-    <ng-container *ngFor="let p of products">
+    <ng-container *ngFor="let p of filteredProducts">
         <app-product-card [product]="p"></app-product-card>
 
     </ng-container>
+</div>
+
+<div *ngIf="allProducts.length>0 && filteredProducts.length==0">
+
+    No search Results found
 
 </div>

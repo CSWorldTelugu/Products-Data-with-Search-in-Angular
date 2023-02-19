@@ -10,14 +10,28 @@ export class ProductListComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
 
-  products: any
+  filteredProducts: any = [];
+  allProducts: any = []
+
+  searchInput = ""
 
   ngOnInit(): void {
     this.http.get("https://fakestoreapi.com/products").subscribe(
       (res) => {
-        this.products = res
+        this.filteredProducts = res;
+        this.allProducts = res;
       }
     )
+  }
+
+  filterProducts() {
+    console.log("d")
+    this.filteredProducts = this.allProducts.filter(
+      (p) => {
+        return p.title.toLowerCase().includes(this.searchInput.toLowerCase())
+      }
+    )
+
   }
 
 }
