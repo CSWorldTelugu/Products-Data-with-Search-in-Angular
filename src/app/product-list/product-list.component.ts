@@ -34,4 +34,29 @@ export class ProductListComponent implements OnInit {
 
   }
 
+
+
+  sort(order: any) {
+    console.log(order)
+    if (order == 'asc') {
+      this.filteredProducts.sort(
+        (p1, p2) => {
+          return p1.price > p2.price ? 1 : -1
+
+        }
+      )
+    }
+    else {
+      this.filteredProducts.sort(
+        (p1, p2) => {
+          return p1.price > p2.price ? -1 : 1
+
+        }
+      )
+
+    }
+  }
+
+
+
 }
